@@ -1,0 +1,51 @@
+eventId,name,startDate,endDate,type
+event1,Paris Fashion Week,2025-03-01,2025-03-10,fashion
+event2,Barcelona Music Festival,2025-07-15,2025-07-20,music
+event3,Rome Film Festival,2025-10-15,2025-10-25,film
+event4,Amsterdam Tulip Festival,2025-04-01,2025-05-15,flowers
+event5,Berlin Film Festival,2025-02-05,2025-02-15,film
+event6,Prague Spring Festival,2025-05-12,2025-06-03,music
+event7,Vienna Opera Ball,2025-02-20,2025-02-20,cultural
+event8,London Marathon,2025-04-26,2025-04-26,sports
+event9,Madrid Flamenco Festival,2025-06-01,2025-06-15,cultural
+event10,Lisbon Jazz Festival,2025-07-10,2025-07-17,music
+event11,Florence Art Biennale,2025-09-01,2025-09-30,art
+event12,Venice Carnival,2025-02-14,2025-03-04,cultural
+event13,Athens Epidaurus Festival,2025-06-01,2025-08-31,theater
+event14,Dublin St. Patrick's Day,2025-03-17,2025-03-17,cultural
+event15,Edinburgh Fringe Festival,2025-08-01,2025-08-25,theater
+event16,Stockholm Midsummer,2025-06-21,2025-06-21,cultural
+event17,Copenhagen Jazz Festival,2025-07-04,2025-07-13,music
+event18,Oslo Christmas Market,2025-11-20,2025-12-23,market
+event19,Helsinki Design Week,2025-09-05,2025-09-15,design
+event20,Budapest Spring Festival,2025-03-15,2025-04-15,cultural
+event21,Warsaw Film Festival,2025-10-10,2025-10-20,film
+event22,Krakow Christmas Market,2025-11-25,2025-12-26,market
+event23,Brussels Flower Carpet,2025-08-15,2025-08-18,flowers
+event24,Zurich Street Parade,2025-08-09,2025-08-09,music
+event25,Geneva Motor Show,2025-03-05,2025-03-15,automotive
+event26,Lyon Festival of Lights,2025-12-08,2025-12-11,cultural
+event27,Marseille Jazz Festival,2025-07-18,2025-07-27,music
+event28,Nice Carnival,2025-02-14,2025-03-04,cultural
+event29,Munich Oktoberfest,2025-09-20,2025-10-05,cultural
+event30,Hamburg Harbor Birthday,2025-05-09,2025-05-12,cultural
+event31,Frankfurt Book Fair,2025-10-15,2025-10-19,literature
+event32,Milan Fashion Week,2025-09-20,2025-09-28,fashion
+event33,Naples Pizza Festival,2025-09-01,2025-09-07,food
+event34,Seville Feria,2025-04-20,2025-04-26,cultural
+event35,Valencia Fallas,2025-03-15,2025-03-19,cultural
+event36,Porto Wine Festival,2025-09-01,2025-09-30,food
+event37,Coimbra Fado Festival,2025-10-01,2025-10-10,music
+event38,Santorini Wine Festival,2025-08-15,2025-08-20,food
+event39,Mykonos Summer Festival,2025-07-01,2025-08-31,music
+event40,Reykjavik Winter Lights,2025-02-06,2025-02-09,cultural
+event41,Innsbruck Christmas Market,2025-11-20,2025-12-24,market
+event42,Salzburg Festival,2025-07-25,2025-08-31,music
+event43,Lucerne Festival,2025-08-12,2025-09-11,music
+event44,Interlaken Adventure Festival,2025-06-15,2025-06-22,sports
+event45,Chamonix Mountain Festival,2025-07-01,2025-07-15,sports
+event46,Annecy Animation Festival,2025-06-09,2025-06-14,film
+event47,Bruges Chocolate Festival,2025-04-01,2025-04-07,food
+event48,Ghent Festival,2025-07-18,2025-07-27,cultural
+event49,Rotterdam International Film Festival,2025-01-23,2025-02-03,film
+event50,Utrecht Early Music Festival,2025-08-23,2025-09-01,music

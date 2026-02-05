@@ -1,0 +1,432 @@
+{
+  "version": "3.0.0",
+  "visualisation": {
+    "nodes": [
+      {
+        "id": "n:1",
+        "position": {
+          "x": 23.67525504499335,
+          "y": 109.23649633661825
+        }
+      },
+      {
+        "id": "n:2",
+        "position": {
+          "x": 169.65393940232315,
+          "y": -114.35331442537847
+        }
+      },
+      {
+        "id": "n:3",
+        "position": {
+          "x": -125.10943066562862,
+          "y": -114.80563512544654
+        }
+      },
+      {
+        "id": "n:4",
+        "position": {
+          "x": 155.74112551344066,
+          "y": 279.0793856430989
+        }
+      },
+      {
+        "id": "n:5",
+        "position": {
+          "x": -139.160504991128,
+          "y": 254.99050622424127
+        }
+      }
+    ]
+  },
+  "dataModel": {
+    "version": "3.0.0",
+    "graphSchemaRepresentation": {
+      "graphSchema": {
+        "constraints": [
+          {
+            "$id": "c:1",
+            "name": "userId_User_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:5"
+            },
+            "properties": [
+              {
+                "$ref": "#p:1"
+              }
+            ]
+          },
+          {
+            "$id": "c:2",
+            "name": "cityId_City_uniq",
+            "constraintType": "uniqueness",
+            "entityType": "node",
+            "nodeLabel": {
+              "$ref": "#nl:1"
+            },
+            "properties": [
+              {
+                "$ref": "#p:6"
+              }
+            ]
+          }
+        ],
+        "indexes": [],
+        "nodeLabels": [
+          {
+            "$id": "nl:1",
+            "token": "City",
+            "properties": [
+              {
+                "$id": "p:6",
+                "token": "cityId",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:7",
+                "token": "name",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:8",
+                "token": "country",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:9",
+                "token": "population",
+                "type": {
+                  "type": "integer"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:10",
+                "token": "averageBudget",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:11",
+                "token": "cityDescription",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          },
+          {
+            "$id": "nl:2",
+            "token": "Attraction",
+            "properties": []
+          },
+          {
+            "$id": "nl:3",
+            "token": "Activity",
+            "properties": []
+          },
+          {
+            "$id": "nl:4",
+            "token": "Event",
+            "properties": []
+          },
+          {
+            "$id": "nl:5",
+            "token": "User",
+            "properties": [
+              {
+                "$id": "p:1",
+                "token": "userId",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:2",
+                "token": "name",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:3",
+                "token": "email",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:4",
+                "token": "travelStyle",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              },
+              {
+                "$id": "p:5",
+                "token": "budgetRange",
+                "type": {
+                  "type": "string"
+                },
+                "nullable": true
+              }
+            ]
+          }
+        ],
+        "nodeObjectTypes": [
+          {
+            "$id": "n:1",
+            "labels": [
+              {
+                "$ref": "#nl:1"
+              }
+            ]
+          },
+          {
+            "$id": "n:2",
+            "labels": [
+              {
+                "$ref": "#nl:2"
+              }
+            ]
+          },
+          {
+            "$id": "n:3",
+            "labels": [
+              {
+                "$ref": "#nl:3"
+              }
+            ]
+          },
+          {
+            "$id": "n:4",
+            "labels": [
+              {
+                "$ref": "#nl:4"
+              }
+            ]
+          },
+          {
+            "$id": "n:5",
+            "labels": [
+              {
+                "$ref": "#nl:5"
+              }
+            ]
+          }
+        ],
+        "relationshipObjectTypes": [
+          {
+            "$id": "r:1",
+            "type": {
+              "$ref": "#rt:1"
+            },
+            "from": {
+              "$ref": "#n:1"
+            },
+            "to": {
+              "$ref": "#n:2"
+            }
+          },
+          {
+            "$id": "r:2",
+            "type": {
+              "$ref": "#rt:2"
+            },
+            "from": {
+              "$ref": "#n:1"
+            },
+            "to": {
+              "$ref": "#n:3"
+            }
+          },
+          {
+            "$id": "r:3",
+            "type": {
+              "$ref": "#rt:3"
+            },
+            "from": {
+              "$ref": "#n:2"
+            },
+            "to": {
+              "$ref": "#n:3"
+            }
+          },
+          {
+            "$id": "r:4",
+            "type": {
+              "$ref": "#rt:4"
+            },
+            "from": {
+              "$ref": "#n:1"
+            },
+            "to": {
+              "$ref": "#n:4"
+            }
+          },
+          {
+            "$id": "r:8",
+            "type": {
+              "$ref": "#rt:8"
+            },
+            "from": {
+              "$ref": "#n:1"
+            },
+            "to": {
+              "$ref": "#n:1"
+            }
+          },
+          {
+            "$id": "r:7",
+            "type": {
+              "$ref": "#rt:7"
+            },
+            "from": {
+              "$ref": "#n:5"
+            },
+            "to": {
+              "$ref": "#n:1"
+            }
+          },
+          {
+            "$id": "r:9",
+            "type": {
+              "$ref": "#rt:9"
+            },
+            "from": {
+              "$ref": "#n:5"
+            },
+            "to": {
+              "$ref": "#n:1"
+            }
+          },
+          {
+            "$id": "r:10",
+            "type": {
+              "$ref": "#rt:10"
+            },
+            "from": {
+              "$ref": "#n:5"
+            },
+            "to": {
+              "$ref": "#n:5"
+            }
+          },
+          {
+            "$id": "r:11",
+            "type": {
+              "$ref": "#rt:11"
+            },
+            "from": {
+              "$ref": "#n:5"
+            },
+            "to": {
+              "$ref": "#n:5"
+            }
+          }
+        ],
+        "relationshipTypes": [
+          {
+            "$id": "rt:1",
+            "token": "HAS_ATTRACTION",
+            "properties": []
+          },
+          {
+            "$id": "rt:2",
+            "token": "OFFERS_ACTIVITY",
+            "properties": []
+          },
+          {
+            "$id": "rt:3",
+            "token": "CATEGORIZED_AS",
+            "properties": []
+          },
+          {
+            "$id": "rt:4",
+            "token": "HOSTS_EVENT",
+            "properties": []
+          },
+          {
+            "$id": "rt:8",
+            "token": "NEARBY_TO",
+            "properties": []
+          },
+          {
+            "$id": "rt:7",
+            "token": "VISITED",
+            "properties": []
+          },
+          {
+            "$id": "rt:9",
+            "token": "RECOMMENDS",
+            "properties": []
+          },
+          {
+            "$id": "rt:10",
+            "token": "FRIENDS_WITH",
+            "properties": []
+          },
+          {
+            "$id": "rt:11",
+            "token": "HAS_SIMILAR_PREFERENCES",
+            "properties": []
+          }
+        ]
+      },
+      "version": "1.0.0"
+    },
+    "graphSchemaExtensionsRepresentation": {
+      "nodeKeyProperties": [
+        {
+          "node": {
+            "$ref": "#n:5"
+          },
+          "keyProperties": [
+            {
+              "$ref": "#p:1"
+            }
+          ]
+        },
+        {
+          "node": {
+            "$ref": "#n:1"
+          },
+          "keyProperties": [
+            {
+              "$ref": "#p:6"
+            }
+          ]
+        }
+      ]
+    },
+    "graphMappingRepresentation": {
+      "dataSourceSchema": {
+        "tableSchemas": [],
+        "type": null
+      },
+      "nodeMappings": [],
+      "relationshipMappings": []
+    },
+    "configurations": {
+      "idsToIgnore": []
+    }
+  }
+}

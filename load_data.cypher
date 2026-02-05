@@ -23,7 +23,7 @@ CREATE INDEX event_type IF NOT EXISTS FOR (e:Event) ON (e.type);
 // ============================================
 
 // Load Users
-LOAD CSV WITH HEADERS FROM 'file:///users.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/users.csv' AS row
 CREATE (u:User {
   userId: row.userId,
   name: row.name,
@@ -33,7 +33,7 @@ CREATE (u:User {
 });
 
 // Load Cities
-LOAD CSV WITH HEADERS FROM 'file:///cities.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/cities.csv' AS row
 CREATE (c:City {
   cityId: row.cityId,
   name: row.name,
@@ -45,7 +45,7 @@ CREATE (c:City {
 });
 
 // Load Attractions
-LOAD CSV WITH HEADERS FROM 'file:///attractions.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/attractions.csv' AS row
 CREATE (a:Attraction {
   attractionId: row.attractionId,
   name: row.name,
@@ -57,7 +57,7 @@ CREATE (a:Attraction {
 });
 
 // Load Events
-LOAD CSV WITH HEADERS FROM 'file:///events.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/events.csv' AS row
 CREATE (e:Event {
   eventId: row.eventId,
   name: row.name,
@@ -67,7 +67,7 @@ CREATE (e:Event {
 });
 
 // Load Activities
-LOAD CSV WITH HEADERS FROM 'file:///activities.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/activities.csv' AS row
 CREATE (a:Activity {
   activityId: row.activityId,
   name: row.name,
@@ -80,13 +80,13 @@ CREATE (a:Activity {
 // ============================================
 
 // Create FRIENDS_WITH relationships
-LOAD CSV WITH HEADERS FROM 'file:///friends.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/friends.csv' AS row
 MATCH (u1:User {userId: row.userId1})
 MATCH (u2:User {userId: row.userId2})
 CREATE (u1)-[:FRIENDS_WITH]->(u2);
 
 // Create VISITED relationships
-LOAD CSV WITH HEADERS FROM 'file:///visited.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/visited.csv' AS row
 MATCH (u:User {userId: row.userId})
 MATCH (c:City {cityId: row.cityId})
 CREATE (u)-[:VISITED {
@@ -95,25 +95,25 @@ CREATE (u)-[:VISITED {
 }]->(c);
 
 // Create HAS_ATTRACTION relationships
-LOAD CSV WITH HEADERS FROM 'file:///city_attractions.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/city_attractions.csv' AS row
 MATCH (c:City {cityId: row.cityId})
 MATCH (a:Attraction {attractionId: row.attractionId})
 CREATE (c)-[:HAS_ATTRACTION]->(a);
 
 // Create HOSTS_EVENT relationships
-LOAD CSV WITH HEADERS FROM 'file:///city_events.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/city_events.csv' AS row
 MATCH (c:City {cityId: row.cityId})
 MATCH (e:Event {eventId: row.eventId})
 CREATE (c)-[:HOSTS_EVENT]->(e);
 
 // Create OFFERS_ACTIVITY relationships
-LOAD CSV WITH HEADERS FROM 'file:///city_activities.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/city_activities.csv' AS row
 MATCH (c:City {cityId: row.cityId})
 MATCH (a:Activity {activityId: row.activityId})
 CREATE (c)-[:OFFERS_ACTIVITY]->(a);
 
 // Create NEARBY_TO relationships
-LOAD CSV WITH HEADERS FROM 'file:///nearby_cities.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/nearby_cities.csv' AS row
 MATCH (c1:City {cityId: row.cityId1})
 MATCH (c2:City {cityId: row.cityId2})
 CREATE (c1)-[:NEARBY_TO {
@@ -122,13 +122,13 @@ CREATE (c1)-[:NEARBY_TO {
 }]->(c2);
 
 // Create RECOMMENDS relationships
-LOAD CSV WITH HEADERS FROM 'file:///recommendations.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/recommendations.csv' AS row
 MATCH (u:User {userId: row.userId})
 MATCH (c:City {cityId: row.cityId})
 CREATE (u)-[:RECOMMENDS]->(c);
 
 // Create CATEGORIZED_AS relationships (Attraction -> Activity)
-LOAD CSV WITH HEADERS FROM 'file:///attraction_activities.csv' AS row
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/earacil/techtalk-edo-bcn-2026-demo/main/data/attraction_activities.csv' AS row
 MATCH (a:Attraction {attractionId: row.attractionId})
 MATCH (act:Activity {activityId: row.activityId})
 CREATE (a)-[:CATEGORIZED_AS]->(act);

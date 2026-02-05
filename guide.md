@@ -17,8 +17,7 @@ Step-by-step guide for the Neo4j Travel Recommendations demo. The graph models u
 
 **Objective:** Explore the graph and run Cypher queries in Neo4j Browser.
 
-- Use **Neo4j Browser** (or Aura Query) to run Cypher queries.
-- Add location
+- Use **Neo4j Browser** (or Aura Query) to run Cypher queries. All Graph!
 
 ---
 
@@ -27,6 +26,9 @@ Step-by-step guide for the Neo4j Travel Recommendations demo. The graph models u
 **Objective:** Visualize and explore the graph with Neo4j Dashboards.
 
 - Open **Neo4j Dashboards**.
+- Cities on Graph with location
+- Statistics
+- Recommendations by User or by City
 
 ---
 
@@ -34,7 +36,10 @@ Step-by-step guide for the Neo4j Travel Recommendations demo. The graph models u
 
 **Objective:** Visualize and explore the graph with Neo4j Bloom.
 
-- Open **Neo4j Explore** .
+- Open **Neo4j Explore**.
+- Load perspective. 
+- Saved Cypher for similar preferences
+- Available events. hierarchical Layput. Slicer...
 
 ---
 

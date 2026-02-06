@@ -8,8 +8,7 @@ Step-by-step guide for the Neo4j Travel Recommendations demo. The graph models u
 
 **Objective:** Import the travel recommendations graph into Neo4j AuraDB.
 
-- Import Model to **Neo4j Aura Import** SHOW
-- Use **Neo4j Aura Import** to load the CSV files from the `/data` folder.
+- Import Model to **Neo4j Aura Import**
 
 ---
 
@@ -60,7 +59,7 @@ Step-by-step guide for the Neo4j Travel Recommendations demo. The graph models u
 
 **Objective:** Show how an AI agent can reason over the graph with Aura Agents.
 
-- Use an **LLM agent** (e.g. LangChain, LlamaIndex) with Neo4j as a tool.
+- Use an **LLM agent** with Neo4j AuraDB as a tool.
 - The agent should:
   - Receive natural language questions.
   - Generate and execute Cypher queries.

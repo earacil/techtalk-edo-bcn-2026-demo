@@ -17,7 +17,18 @@ Use the neo4j-mcp MCP exclusively to answer the following questions.
 Do not use general knowledge or other tools.
 If the MCP cannot complete a step, indicate it explicitly.
 
-## Questions
+## Questions Agent
+
+1. **I am Enrique Aracil. What cities have I visited?**
+   - Direct query on the user's VISITED relationships
+
+2. **Which of my friends have also visited any of those cities?**
+   - Social query combining the user's visited cities with friends' visits
+
+3. **Recommend me a romantic city with art, museums and beautiful architecture, and indicate the score**
+   - Recommendation query combining city attributes and embeddings
+
+## Questions MCP
 
 1. **I am Enrique Aracil. What cities have my friends visited and rated with more than 4.5 stars?**
    - Social query based on the friendship network and ratings

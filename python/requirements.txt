@@ -1,0 +1,8 @@
+# GraphRAG City Similarity - Travel Recommendations Demo
+neo4j>=5.14.0
+langchain-openai>=0.1.0
+langchain-neo4j>=0.1.0
+langchain-core>=0.2.0
+python-dotenv>=1.0.0
+# Resolve conflict with google-adk (requires tenacity 8.x)
+tenacity>=8.0.0,<9.0.0

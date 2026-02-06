@@ -1,106 +1,110 @@
-# Integración con MCP (Model Context Protocol)
+# MCP Integration (Model Context Protocol)
 
-El LLM utilizará herramientas MCP para:
+The LLM will use MCP tools to:
 
-1. **Ejecutar Cypher**: Consultar directamente el estado del grafo.
-2. **Enriquecer**: Consultar una API de clima externa para descartar ciudades donde esté lloviendo hoy.
+1. **Execute Cypher**: Query the graph state directly.
+2. **Enrich**: Query an external weather API to filter out cities where it's raining today.
 
-## Preguntas Relevantes que MCP puede Responder
+Prompt: Use exclusively the neo4j-mcp MCP to answer next questions.
+Do not use general knowledge or other tools.
+If the MCP does not allow completing a step, indicate it explicitly.
 
-1. **SI - ¿Qué ciudades han visitado mis amigos y han calificado con más de 4.5 estrellas?**
-   - Consulta social basada en la red de amigos y sus ratings
+## Relevant Questions MCP Can Answer
 
-2. **SI? - ¿Qué ciudades están a menos de 500 km de distancia desde Barcelona?**
-   - Consulta de proximidad usando funciones de distancia con coordenadas POINT: `distance(barcelona.location, city.location)`
+1. **YES - What cities have my friends visited and rated with more than 4.5 stars?**
+   - Social query based on the friends network and their ratings
 
-3. **SI - ¿Qué ciudades en Francia tienen atracciones categorizadas como "for children"?**
-   - Consulta geográfica y de categorización combinada
+2. **YES? - What cities are within 500 km of Barcelona?**
+   - Proximity query using distance functions with POINT coordinates: `distance(barcelona.location, city.location)`
 
-4. **SI! - ¿Qué ciudades tienen eventos o festivales durante el mes de julio?**
-   - Consulta temporal basada en fechas de eventos
+3. **YES - What cities in France have attractions categorized as "for children"?**
+   - Combined geographic and categorization query
 
-5. **SI - ¿Qué ciudades ofrecen actividades de aventura y tienen un presupuesto medio?**
-   - Consulta multi-criterio: actividades + presupuesto
+4. **YES! - What cities have events or festivals during July?**
+   - Temporal query based on event dates
 
-7. **SI - ¿Qué ciudades puedo visitar en una ruta que conecte París, Roma y Barcelona? Salgo desde Barcelona**
-   - Consulta de ruta usando relaciones NEARBY y algoritmos de camino
+5. **YES - What cities offer adventure activities and have a medium budget?**
+   - Multi-criteria query: activities + budget
 
-8. **SI - ¿Qué ciudades tienen atracciones históricas con nivel de aglomeración bajo?**
-   - Consulta combinando categorías de atracciones y propiedades de crowdLevel
+7. **YES - What cities can I visit on a route connecting Paris, Rome and Barcelona? I'm departing from Barcelona**
+   - Route query using NEARBY relationships and path algorithms
 
-10. **SI - ¿Qué ciudades tienen el mejor ratio de rating promedio vs. presupuesto promedio?**
-    - Consulta analítica con cálculos de valor
+8. **YES - What cities have historical attractions with low crowd level?**
+   - Query combining attraction categories and crowdLevel properties
 
-13. **SI - ¿Qué ciudades francesas están más cerca de Barcelona que de París?**
-    - Consulta comparativa de distancias usando funciones espaciales para encontrar ciudades equidistantes o más cercanas
+10. **YES - What cities have the best ratio of average rating vs. average budget?**
+    - Analytical query with value calculations
 
-15. **SI - ¿Cuáles son las 5 ciudades más cercanas a Barcelona ordenadas por distancia?**
-    - Consulta de proximidad usando `distance()` y ordenamiento por distancia calculada
+13. **YES - What French cities are closer to Barcelona than to Paris?**
+    - Comparative distance query using spatial functions to find equidistant or closer cities
+
+15. **YES - What are the 5 cities closest to Barcelona ordered by distance?**
+    - Proximity query using `distance()` and ordering by calculated distance
 
 **GDS**
-16. **SI - Ejecuta el algoritmo de luvain de gds sobre el grafo e indica cuales son las comunidades que se detectan**
+16. **YES - Run the Louvain algorithm from GDS on the graph and indicate which communities are detected**
 
-17. **SI - Ejecuta el algoritmo PageRank para obtener los 10 usuarios más influyentes**
-    - Influencia transitiva: no solo tus conexiones directas, sino también la influencia de tus conexiones
+17. **YES - Run the PageRank algorithm to get the 10 most influential users**
+    - Transitive influence: not just your direct connections, but also the influence of your connections
 
-18. **SI - busca ciudades similares en cuanto a tipos de actividad que se pueden hacer usando Node Similarity**
+18. **YES - Find similar cities in terms of types of activities that can be done using Node Similarity**
 
-## Consultas por Similaridad (Vector Search)
+## Similarity Queries (Vector Search)
 
-### Similaridad de Ciudades
-- **Embedding de ciudad**: Vector que representa características de la ciudad
-  - Basado en: actividades ofrecidas, tipo de atracciones, presupuesto, clima, cultura
-  - Uso: "Encuentra ciudades similares a París" o "Ciudades con perfil cultural similar a Florencia"
+### City Similarity
+- **City embedding**: Vector representing city characteristics
+  - Based on: activities offered, attraction types, budget, climate, culture
+  - Use: "Find cities similar to Paris" or "Cities with cultural profile similar to Florence"
 
-### Similaridad de Usuarios
-- **Embedding de usuario**: Vector que representa preferencias de viaje del usuario
-  - Basado en: historial de visitas, ratings dados, estilo de viaje, presupuesto
-  - Uso: "Encuentra usuarios con gustos similares" para recomendaciones colaborativas
+### User Similarity
+- **User embedding**: Vector representing user travel preferences
+  - Based on: visit history, ratings given, travel style, budget
+  - Use: "Find users with similar tastes" for collaborative recommendations
 
-### Similaridad de Atracciones
-- **Embedding de atracción**: Vector que representa características de la atracción
-  - Basado en: categoría, tipo, rating, nivel de aglomeración, descripción
-  - Uso: "Encuentra atracciones similares al Louvre" o "Atracciones con perfil similar pero menos concurridas"
+### Attraction Similarity
+- **Attraction embedding**: Vector representing attraction characteristics
+  - Based on: category, type, rating, crowd level, description
+  - Use: "Find attractions similar to the Louvre" or "Attractions with similar profile but less crowded"
 
-### Similaridad de Actividades
-- **Embedding de actividad**: Vector que representa el tipo de experiencia
-  - Basado en: descripción, categoría, ciudades donde se ofrece
-  - Uso: "Encuentra actividades complementarias a museos" o "Actividades similares a senderismo"
+### Activity Similarity
+- **Activity embedding**: Vector representing the type of experience
+  - Based on: description, category, cities where it's offered
+  - Use: "Find activities complementary to museums" or "Activities similar to hiking"
 
-## Propiedades Propuestas para Embeddings (No implementadas aún)
+## Proposed Properties for Embeddings (Not yet implemented)
 
-### Para Nodos City:
-- `cityEmbedding`: Vector de embeddings que representa características de la ciudad
-  - Generado a partir de: nombre, país, actividades ofrecidas, tipos de atracciones, presupuesto promedio, descripción cultural
-- `cityDescription`: Texto descriptivo de la ciudad (para generar embeddings)
-- `cityFeatures`: Array de características clave (ej: ["beach", "museums", "nightlife", "history"])
+### For City Nodes:
+- `cityEmbedding`: Embedding vector representing city characteristics
+  - Generated from: name, country, activities offered, attraction types, average budget, cultural description
+- `cityDescription`: Descriptive text of the city (for generating embeddings)
+- `cityFeatures`: Array of key features (e.g. ["beach", "museums", "nightlife", "history"])
 
-### Para Nodos User:
-- `userEmbedding`: Vector de embeddings que representa preferencias del usuario
-  - Generado a partir de: historial de visitas, ratings dados, estilo de viaje, presupuesto, ciudades favoritas
-- `userPreferences`: Texto descriptivo de preferencias (para generar embeddings)
-- `travelProfile`: Objeto JSON con perfil de viaje estructurado
+### For User Nodes:
+- `userEmbedding`: Embedding vector representing user preferences
+  - Generated from: visit history, ratings given, travel style, budget, favorite cities
+- `userPreferences`: Descriptive text of preferences (for generating embeddings)
+- `travelProfile`: JSON object with structured travel profile
 
-### Para Nodos Attraction:
-- `attractionEmbedding`: Vector de embeddings que representa la atracción
-  - Generado a partir de: nombre, categoría, tipo, descripción, rating, nivel de aglomeración
-- `attractionDescription`: Texto descriptivo detallado de la atracción
-- `attractionTags`: Array de tags descriptivos (ej: ["historical", "art", "architecture", "family-friendly"])
+### For Attraction Nodes:
+- `attractionEmbedding`: Embedding vector representing the attraction
+  - Generated from: name, category, type, description, rating, crowd level
+- `attractionDescription`: Detailed descriptive text of the attraction
+- `attractionTags`: Array of descriptive tags (e.g. ["historical", "art", "architecture", "family-friendly"])
 
-### Para Nodos Activity:
-- `activityEmbedding`: Vector de embeddings que representa el tipo de actividad
-  - Generado a partir de: nombre, tipo, descripción, ciudades donde se ofrece
-- `activityDescription`: Texto descriptivo de la actividad
-- `activityCategory`: Categoría principal de la actividad
+### For Activity Nodes:
+- `activityEmbedding`: Embedding vector representing the activity type
+  - Generated from: name, type, description, cities where it's offered
+- `activityDescription`: Descriptive text of the activity
+- `activityCategory`: Main activity category
 
-### Para Relaciones:
-- `VISITED` podría tener: `visitContext` (texto descriptivo de la experiencia) para generar embeddings contextuales
-- `RECOMMENDED` podría tener: `recommendationReason` (texto con motivo de la recomendación) para embeddings semánticos
+### For Relationships:
+- `VISITED` could have: `visitContext` (descriptive text of the experience) for contextual embeddings
+- `RECOMMENDED` could have: `recommendationReason` (text with recommendation reason) for semantic embeddings
 
-## Ejemplos de Consultas de Distancia y Coordenadas
+## Distance and Coordinate Query Examples
 
 ```cypher
-// Encontrar ciudades dentro de un radio de 500 km desde Barcelona
+// Find cities within 500 km radius from Barcelona
 MATCH (barcelona:City {cityId: 'city2'})
 MATCH (other:City)
 WHERE other.cityId <> 'city2' AND other.location IS NOT NULL
@@ -109,13 +113,13 @@ WHERE distanceKm <= 500
 RETURN other.name, other.country, distanceKm
 ORDER BY distanceKm ASC
 
-// Calcular distancia entre dos ciudades específicas
+// Calculate distance between two specific cities
 MATCH (paris:City {cityId: 'city1'})
 MATCH (rome:City {cityId: 'city3'})
 RETURN paris.name AS fromCity, rome.name AS toCity, 
        distance(paris.location, rome.location) / 1000 AS distanceKm
 
-// Encontrar ciudades más cercanas a una ubicación específica (coordenadas)
+// Find cities closest to a specific location (coordinates)
 MATCH (c:City)
 WHERE c.location IS NOT NULL
 WITH c, distance(point({longitude: 2.3522, latitude: 48.8566}), c.location) / 1000 AS distanceKm
@@ -124,7 +128,7 @@ RETURN c.name, c.country, distanceKm
 ORDER BY distanceKm ASC
 LIMIT 10
 
-// Encontrar ciudades más cercanas a París que a Londres
+// Find cities closer to Paris than to London
 MATCH (paris:City {cityId: 'city1'})
 MATCH (london:City {cityId: 'city8'})
 MATCH (other:City)
@@ -136,7 +140,7 @@ WHERE distanceFromParis < distanceFromLondon
 RETURN other.name, distanceFromParis, distanceFromLondon
 ORDER BY distanceFromParis ASC
 
-// Encontrar ciudades cercanas con filtro de presupuesto
+// Find nearby cities with budget filter
 MATCH (barcelona:City {cityId: 'city2'})
 MATCH (other:City)
 WHERE other.cityId <> 'city2' 
@@ -147,7 +151,7 @@ WHERE distanceKm <= 400
 RETURN other.name, other.country, other.averageBudget, distanceKm
 ORDER BY distanceKm ASC
 
-// Encontrar las 5 ciudades más cercanas a una ubicación
+// Find the 5 closest cities to a location
 MATCH (origin:City {cityId: 'city1'})
 MATCH (other:City)
 WHERE other.cityId <> 'city1' AND other.location IS NOT NULL
@@ -157,10 +161,10 @@ ORDER BY distanceKm ASC
 LIMIT 5
 ```
 
-## Ejemplos de Consultas de Similaridad Vectorial
+## Vector Similarity Query Examples
 
 ```cypher
-// Encontrar ciudades similares usando embeddings
+// Find similar cities using embeddings
 MATCH (c:City {cityId: 'city1'})
 WITH c.cityEmbedding AS queryVector
 MATCH (other:City)
@@ -171,7 +175,7 @@ RETURN other.name, similarity
 ORDER BY similarity DESC
 LIMIT 10
 
-// Encontrar usuarios con preferencias similares
+// Find users with similar preferences
 MATCH (u:User {userId: 'user1'})
 WITH u.userEmbedding AS queryVector
 MATCH (other:User)
@@ -181,7 +185,7 @@ WHERE similarity > 0.75
 RETURN other.name, similarity
 ORDER BY similarity DESC
 
-// Encontrar atracciones similares pero menos concurridas
+// Find similar attractions but less crowded
 MATCH (a:Attraction {attractionId: 'attr1'})
 WITH a.attractionEmbedding AS queryVector
 MATCH (other:Attraction)

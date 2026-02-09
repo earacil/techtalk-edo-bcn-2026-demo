@@ -13,9 +13,7 @@ All of this is done through MCP tools that the model invokes autonomously, combi
 
 ## Instructions for the LLM
 
-Use the neo4j-mcp MCP exclusively to answer the following questions.
-Do not use general knowledge or other tools.
-If the MCP cannot complete a step, indicate it explicitly.
+Use the neo4j-mcp MCP exclusively to answer the questions I'm going to write. Do not read any file to get the questions. Do not use general knowledge or other tools. If the MCP cannot complete a step, indicate it explicitly.
 
 ## Questions Agent
 
@@ -47,7 +45,7 @@ If the MCP cannot complete a step, indicate it explicitly.
 
 ### GDS
 
-6. **Run the Louvain algorithm from GDS on the graph and indicate which communities are detected**
+6. **Run the Louvain algorithm from GDS on the graph and indicate which City communities are detected, and explain them**
    - Community detection with the Louvain algorithm
 
 7. **Run the PageRank algorithm to get the 10 most influential users**

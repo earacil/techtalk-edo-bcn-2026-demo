@@ -2,6 +2,9 @@
 // QUERIES.cypher - Neo4j Cypher queries for the travel/cities graph demo
 // =============================================================================
 
+MATCH path = (u:User {name: 'Enrique Aracil'})-[f:FRIENDS_WITH]-(friend:User)
+RETURN path;
+
 // -----------------------------------------------------------------------------
 // SIMILARITY & GRAPH ALGORITHMS
 // -----------------------------------------------------------------------------
